@@ -80,6 +80,8 @@ class PlacementRule():
         def do_section_expansion(rule, section):
             if section in rule.get_section_names():
                 sections_in_obj = sections_infos.get_obj_sections(rule.archive, rule.obj)
+                if not sections_in_obj:
+                    return None
 
                 expansions = fnmatch.filter(sections_in_obj, section)
                 return expansions
